@@ -1,30 +1,19 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import Typed from 'typed.js';
+import { useState, useEffect } from 'react';
 import { Phone, MessageCircle, Trophy, Users, Calendar } from 'lucide-react';
 import yogeshsir from '../photos/yogeshsir.jpg';
 
 const Hero: React.FC = () => {
 
-  const typedRef = useRef<HTMLSpanElement | null>(null);
-  const [showFinalText, setShowFinalText] = useState(false);
+  const [isGlitching, setIsGlitching] = useState(true);
 
   useEffect(() => {
-    if (!typedRef.current) return; // ⬅️ Prevent null error
+    // Stop glitch effect after 3 seconds
+    const timer = setTimeout(() => {
+      setIsGlitching(false);
+    }, 3000);
 
-    const typed = new Typed(typedRef.current, {
-      strings: ["Yogesh Kochar's Classes"],
-      typeSpeed: 100,
-      showCursor: false,
-      loop: false,
-      onComplete: () => {
-        setShowFinalText(true);
-      },
-    });
-
-    return () => {
-      typed.destroy();
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToContact = () => {
@@ -69,23 +58,46 @@ const Hero: React.FC = () => {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                {showFinalText ? (
-                  <>
-                    <span className="bg-gradient-to-r from-white via-amber-100 to-amber-300 bg-clip-text text-transparent">
-                      Yogesh Kochar&apos;s
-                    </span>
-                    <br />
-                    <span className="text-white">Classes</span>
-                  </>
-                ) : (
-                  <span
-                    ref={typedRef}
-                    className="bg-gradient-to-r from-white via-amber-100 to-amber-300 bg-clip-text text-transparent"
-                  />
-                )}
+                <div className={`relative ${isGlitching ? 'animate-glitch' : ''}`}>
+                  <span className={`
+                    bg-gradient-to-r from-white via-amber-100 to-amber-300 bg-clip-text text-transparent
+                    ${isGlitching ? 'animate-pulse' : ''}
+                  `}>
+                    Yogesh Kochar&apos;s
+                  </span>
+                  {isGlitching && (
+                    <>
+                      <span className="absolute top-0 left-0 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent opacity-70 animate-glitch-1">
+                        Yogesh Kochar&apos;s
+                      </span>
+                      <span className="absolute top-0 left-0 bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent opacity-70 animate-glitch-2">
+                        Yogesh Kochar&apos;s
+                      </span>
+                    </>
+                  )}
+                </div>
+                <br />
+                <div className={`relative ${isGlitching ? 'animate-bounce-slow' : ''}`}>
+                  <span className={`
+                    text-white
+                    ${isGlitching ? 'animate-pulse' : ''}
+                  `}>
+                    Classes
+                  </span>
+                  {isGlitching && (
+                    <>
+                      <span className="absolute top-0 left-0 text-cyan-400 opacity-60 animate-glitch-1">
+                        Classes
+                      </span>
+                      <span className="absolute top-0 left-0 text-pink-400 opacity-60 animate-glitch-2">
+                        Classes
+                      </span>
+                    </>
+                  )}
+                </div>
               </h1>
 
-              <div className="text-xl lg:text-2xl text-gray-300 font-medium">
+              <div className={`text-xl lg:text-2xl text-gray-300 font-medium ${isGlitching ? 'animate-fade-in-up' : ''}`}>
                 One Institute. Every Subject. Guaranteed Results.
               </div>
             </div>
