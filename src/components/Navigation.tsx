@@ -51,12 +51,26 @@ const Navigation: React.FC = () => {
 ];
 
 const resultsDropdownItems: DropdownItem[] = [
-  { label: 'Our Gems', href: '#our-gems' },
-  { label: 'Our Shining Stars', href: '#shining-stars' }
+  { 
+    label: 'Our Gems', 
+    href: '#our-gems',
+    subItems: [
+      { label: 'Aman Kumar Karn - Delhi Topper 97%', href: '#our-gems' },
+      { label: 'Shivam Kumar Goel - Gun Gaurav Sammaan', href: '#our-gems' }
+    ]
+  },
+  { 
+    label: 'Our Shining Stars', 
+    href: '#shining-stars',
+    subItems: [
+      { label: 'Class of 2024 Results', href: '#shining-stars' },
+      { label: 'Class of 2025 Results', href: '#shining-stars' }
+    ]
+  }
 ];
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: '/', isPage: true },
   { label: 'About Us', href: '/about', isPage: true },
   { label: 'Learn With Us', href: '#learn', dropdown: learnWithUsDropdownItems },
   { label: 'Results & Achievements', href: '#results', dropdown: resultsDropdownItems },
@@ -100,27 +114,46 @@ const navItems: NavItem[] = [
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
                     {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-1 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-slate-700 py-2">
+                      <div className="absolute top-full left-0 mt-1 w-80 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-slate-700 py-2">
                         {item.dropdown.map((dropdownItem) => (
                           <div
                             key={dropdownItem.label}
                           >
-                            <a
-                              href={dropdownItem.href}
-                              className="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
-                            >
-                              {dropdownItem.label}
-                            </a>
+                            {location.pathname === '/' ? (
+                              <a
+                                href={dropdownItem.href}
+                                className="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                              >
+                                {dropdownItem.label}
+                              </a>
+                            ) : (
+                              <Link
+                                to={`/${dropdownItem.href}`}
+                                className="block px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                              >
+                                {dropdownItem.label}
+                              </Link>
+                            )}
                             {dropdownItem.subItems && (
                               <div className="ml-4 space-y-1">
                                 {dropdownItem.subItems.map((subItem) => (
-                                  <a
-                                    key={subItem.label}
-                                    href={subItem.href}
-                                    className="block px-4 py-1 text-xs text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
-                                  >
-                                    • {subItem.label}
-                                  </a>
+                                  location.pathname === '/' ? (
+                                    <a
+                                      key={subItem.label}
+                                      href={subItem.href}
+                                      className="block px-4 py-1 text-xs text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                                    >
+                                      • {subItem.label}
+                                    </a>
+                                  ) : (
+                                    <Link
+                                      key={subItem.label}
+                                      to={`/${subItem.href}`}
+                                      className="block px-4 py-1 text-xs text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                                    >
+                                      • {subItem.label}
+                                    </Link>
+                                  )
                                 ))}
                               </div>
                             )}
@@ -224,14 +257,50 @@ const navItems: NavItem[] = [
                   {item.dropdown && (
                     <div className="ml-4 mt-1 space-y-1">
                       {item.dropdown.map((dropdownItem) => (
-                        <a
-                          key={dropdownItem.label}
-                          href={dropdownItem.href}
-                          className="block px-4 py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {dropdownItem.label}
-                        </a>
+                        <div key={dropdownItem.label}>
+                          {location.pathname === '/' ? (
+                            <a
+                              href={dropdownItem.href}
+                              className="block px-4 py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {dropdownItem.label}
+                            </a>
+                          ) : (
+                            <Link
+                              to={`/${dropdownItem.href}`}
+                              className="block px-4 py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          )}
+                          {dropdownItem.subItems && (
+                            <div className="ml-4 space-y-1">
+                              {dropdownItem.subItems.map((subItem) => (
+                                location.pathname === '/' ? (
+                                  <a
+                                    key={subItem.label}
+                                    href={subItem.href}
+                                    className="block px-4 py-1 text-xs text-gray-500 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    • {subItem.label}
+                                  </a>
+                                ) : (
+                                  <Link
+                                    key={subItem.label}
+                                    to={`/${subItem.href}`}
+                                    className="block px-4 py-1 text-xs text-gray-500 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    • {subItem.label}
+                                  </Link>
+                                )
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}

@@ -1,5 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import OurGems from '../components/OurGems';
+import ShiningStars from '../components/ShiningStars';
 import Results from '../components/Results';
 import GoogleReviews from '../components/GoogleReviews';
 import VoicesOfSuccess from '../components/VoicesOfSuccess';
@@ -10,6 +12,8 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
+      <OurGems />
+      <ShiningStars />
       <Results />
       <GoogleReviews />
       <VoicesOfSuccess />
