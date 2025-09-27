@@ -142,12 +142,21 @@ const navItems: NavItem[] = [
                       {item.label}
                     </Link>
                   ) : (
-                    <a
-                    href={item.href}
-                    className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
-                  >
-                    {item.label}
-                  </a>
+                    location.pathname === '/' ? (
+                      <a
+                        href={item.href}
+                        className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={`/${item.href}`}
+                        className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    )
                   )
                 )}
               </div>
@@ -194,13 +203,23 @@ const navItems: NavItem[] = [
                       {item.label}
                     </Link>
                   ) : (
-                    <a
-                      href={item.href}
-                      className="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </a>
+                    location.pathname === '/' ? (
+                      <a
+                        href={item.href}
+                        className="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={`/${item.href}`}
+                        className="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )
                   )}
                   {item.dropdown && (
                     <div className="ml-4 mt-1 space-y-1">
