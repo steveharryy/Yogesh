@@ -38,10 +38,10 @@ const VoicesOfSuccess: React.FC = () => {
   };
 
   return (
-    <section id="voices-success" className="py-20 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+    <section id="voices-success" className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Animation */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-4 mb-6">
             <div className="relative">
               <Volume2 className="h-12 w-12 text-purple-500 animate-pulse" />
@@ -64,7 +64,7 @@ const VoicesOfSuccess: React.FC = () => {
         </div>
 
         {/* Video Grid with Enhanced Effects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {youtubeVideos.map((video, index) => (
             <div
               key={index}

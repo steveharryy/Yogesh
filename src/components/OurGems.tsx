@@ -53,10 +53,10 @@ const OurGems: React.FC = () => {
   ];
 
   return (
-    <section id="our-gems" className="py-20 bg-gradient-to-br from-amber-50 to-rose-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+    <section id="our-gems" className="py-16 bg-gradient-to-br from-amber-50 to-rose-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-3 mb-6">
             <Trophy className="h-12 w-12 text-amber-500 animate-bounce" />
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
@@ -90,7 +90,7 @@ const OurGems: React.FC = () => {
         </div>
 
         {/* Gems Showcase */}
-        <div className="space-y-20">
+        <div className="space-y-16">
           {gems.map((gem, index) => (
             <div
               key={gem.id}
@@ -99,7 +99,7 @@ const OurGems: React.FC = () => {
               }`}
             >
               {/* Image Section */}
-              <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+              <div className={`relative mb-8 lg:mb-0 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                 <div className="relative bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
                   <img
                     src={gem.image}
@@ -214,7 +214,7 @@ const OurGems: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-20 text-center">
+        <div className="mt-16 text-center">
           <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 p-8 lg:p-12 rounded-2xl text-white">
             <Trophy className="h-16 w-16 text-amber-400 mx-auto mb-6" />
             <h3 className="text-3xl font-bold mb-4">Be the Next Gem</h3>

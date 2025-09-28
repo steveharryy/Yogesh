@@ -4,32 +4,10 @@ import { reviewsData } from '../data/reviewsData';
 
 const GoogleReviews: React.FC = () => {
   const [hoveredReview, setHoveredReview] = useState<string | null>(null);
-  const [currentRow1, setCurrentRow1] = useState(0);
-  const [currentRow2, setCurrentRow2] = useState(0);
 
   // Split reviews into two rows
   const row1Reviews = reviewsData.slice(0, Math.ceil(reviewsData.length / 2));
   const row2Reviews = reviewsData.slice(Math.ceil(reviewsData.length / 2));
-
-  // Auto-scroll animations
-  useEffect(() => {
-    const interval1 = setInterval(() => {
-      if (!hoveredReview) {
-        setCurrentRow1((prev) => (prev + 1) % row1Reviews.length);
-      }
-    }, 4000);
-
-    const interval2 = setInterval(() => {
-      if (!hoveredReview) {
-        setCurrentRow2((prev) => (prev - 1 + row2Reviews.length) % row2Reviews.length);
-      }
-    }, 4500);
-
-    return () => {
-      clearInterval(interval1);
-      clearInterval(interval2);
-    };
-  }, [hoveredReview, row1Reviews.length, row2Reviews.length]);
 
   const ReviewCard = ({ review, isHovered, onHover, onLeave }: any) => (
     <div
@@ -76,26 +54,11 @@ const GoogleReviews: React.FC = () => {
     </div>
   );
 
-  const AnimatedRow = ({ 
-    reviews, 
-    direction, 
-    currentIndex 
-  }: {
-    reviews: any[];
-    direction: 'left' | 'right';
-    currentIndex: number;
-  }) => (
-    <div className="overflow-hidden">
-      <div 
-        className={`flex transition-transform duration-1000 ease-in-out ${
-          hoveredReview ? 'animation-paused' : ''
-        }`}
-        style={{
-          transform: `translateX(${direction === 'left' ? -currentIndex * 320 : currentIndex * 320}px)`,
-          width: `${reviews.length * 320}px`
-        }}
-      >
-        {reviews.concat(reviews).map((review, index) => (
+  const AnimatedRow = ({ reviews, direction }: { reviews: any[]; direction: 'left' | 'right' }) => (
+    <div className="overflow-hidden relative">
+      <div className={`flex animate-scroll-${direction} hover:pause-animation`}>
+        {/* Duplicate reviews for seamless loop */}
+        {[...reviews, ...reviews, ...reviews].map((review, index) => (
           <ReviewCard
             key={`${review.id}-${index}`}
             review={review}
@@ -109,10 +72,10 @@ const GoogleReviews: React.FC = () => {
   );
 
   return (
-    <section id="google-reviews" className="py-20 bg-gray-50 dark:bg-slate-800 transition-colors duration-300 overflow-hidden">
+    <section id="google-reviews" className="py-16 bg-gray-50 dark:bg-slate-800 transition-colors duration-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-3 mb-6">
             <Heart className="h-12 w-12 text-red-500" />
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
@@ -139,20 +102,18 @@ const GoogleReviews: React.FC = () => {
         </div>
 
         {/* Animated Reviews - Row 1 (Left to Right) */}
-        <div className="mb-8">
+        <div className="mb-6">
           <AnimatedRow
             reviews={row1Reviews}
             direction="left"
-            currentIndex={currentRow1}
           />
         </div>
 
         {/* Animated Reviews - Row 2 (Right to Left) */}
-        <div className="mb-16">
+        <div className="mb-12">
           <AnimatedRow
             reviews={row2Reviews}
             direction="right"
-            currentIndex={currentRow2}
           />
         </div>
 
@@ -191,11 +152,6 @@ const GoogleReviews: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        .animation-paused {
-          animation-play-state: paused !important;
-        }
-      `}</style>
     </section>
   );
 };

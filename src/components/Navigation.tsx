@@ -61,10 +61,10 @@ const resultsDropdownItems: DropdownItem[] = [
   },
   { 
     label: 'Our Shining Stars', 
-    href: '#shining-stars',
+    href: '#results',
     subItems: [
-      { label: 'Class of 2024 Results', href: '#shining-stars' },
-      { label: 'Class of 2025 Results', href: '#shining-stars' }
+      { label: 'Class of 2024 Results', href: '#results' },
+      { label: 'Class of 2025 Results', href: '#results' }
     ]
   }
 ];

@@ -2,18 +2,15 @@ import React from 'react';
 import { Quote } from 'lucide-react';
 import { facultyData } from '../data/facultyData';
 
-// If you're using Next.js, uncomment this:
-// import Image from 'next/image';
-
 const Faculty: React.FC = () => {
   return (
     <section
       id="faculty"
-      className="py-20 bg-gray-50 dark:bg-slate-800 transition-colors duration-300"
+      className="py-16 bg-gray-50 dark:bg-slate-800 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Our{' '}
             <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
@@ -28,7 +25,7 @@ const Faculty: React.FC = () => {
         </div>
 
         {/* Faculty Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {facultyData.map((faculty) => (
             <div
               key={faculty.id}
@@ -40,15 +37,10 @@ const Faculty: React.FC = () => {
                   src={faculty.image}
                   alt={faculty.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg';
+                  }}
                 />
-                {/* If using Next.js Image component:
-                <Image
-                  src={faculty.image}
-                  alt={faculty.name}
-                  width={400}
-                  height={300}
-                  className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                /> */}
               </div>
 
               {/* Name & Title */}
@@ -88,7 +80,7 @@ const Faculty: React.FC = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center">
           <div className="bg-gradient-to-r from-amber-500 to-rose-500 p-8 rounded-2xl text-white">
             <h3 className="text-3xl font-bold mb-4">Meet Our Faculty in Person</h3>
             <p className="text-xl mb-6 opacity-90">

@@ -34,10 +34,10 @@ const Resources: React.FC = () => {
   ];
 
   return (
-    <section id="resources" className="py-20 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
+    <section id="resources" className="py-16 bg-gray-50 dark:bg-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Study <span className="bg-gradient-to-r from-amber-400 to-emerald-500 bg-clip-text text-transparent">Smarter</span>
           </h2>
@@ -53,7 +53,7 @@ const Resources: React.FC = () => {
         </div>
 
         {/* Resource Categories */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {resourceCategories.map((category, index) => (
             <div
               key={category.title}
@@ -114,7 +114,7 @@ const Resources: React.FC = () => {
         </div>
 
         {/* Quick Access Features */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
           <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-slate-700 text-center">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Download className="h-6 w-6 text-white" />

@@ -43,10 +43,10 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="about" className="py-16 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             About <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">YKC</span>
           </h2>
@@ -56,7 +56,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Story Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 items-center mb-16">
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
               Our Inspiring Journey
@@ -106,7 +106,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {features.map((feature, index) => (
             <div
               key={feature.title}
@@ -126,7 +126,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Philosophy Section */}
-        <div className="mt-20 text-center">
+        <div className="text-center">
           <div className="bg-gradient-to-r from-amber-50 to-rose-50 dark:from-slate-800 dark:to-slate-700 p-8 lg:p-12 rounded-2xl">
             <Heart className="h-12 w-12 text-amber-600 dark:text-amber-400 mx-auto mb-6" />
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">

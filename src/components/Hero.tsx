@@ -191,21 +191,21 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative">
-            <div className="relative z-10 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-2xl">
-              <img
-                src={yogeshsir}
-                alt="Students learning at YKC"
-                className="w-full h-80 object-cover rounded-lg"
-              />
+        </div>
 
-              {/* Floating Achievement Card */}
-              
+        {/* Landscape Image Section */}
+        <div className="mt-16">
+          <div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-200 dark:bg-slate-700 rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg"
+              alt="YKC Learning Environment"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
+            <div className="absolute bottom-6 left-6 text-white">
+              <h3 className="text-2xl font-bold mb-2">Excellence in Education</h3>
+              <p className="text-lg opacity-90">Where dreams meet reality</p>
             </div>
-
-            {/* Background Decoration */}
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-rose-400/20 rounded-2xl transform translate-x-4 translate-y-4 -z-10"></div>
           </div>
         </div>
       </div>
