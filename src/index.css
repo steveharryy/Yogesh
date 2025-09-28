@@ -3,33 +3,34 @@
 @tailwind utilities;
 
 @layer utilities {
-  .animate-scroll-left {
-    animation: scroll-left 30s linear infinite;
+  .animate-scroll-left-to-right {
+    animation: scrollLeftToRight 40s linear infinite;
   }
   
-  .animate-scroll-right {
-    animation: scroll-right 35s linear infinite;
+  .animate-scroll-right-to-left {
+    animation: scrollRightToLeft 45s linear infinite;
   }
   
-  .pause-animation:hover {
+  .animate-scroll-left-to-right:hover,
+  .animate-scroll-right-to-left:hover {
     animation-play-state: paused;
   }
 }
 
-@keyframes scroll-left {
+@keyframes scrollLeftToRight {
   0% {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(-33.333%);
+    transform: translateX(0%);
   }
 }
 
-@keyframes scroll-right {
+@keyframes scrollRightToLeft {
   0% {
-    transform: translateX(-33.333%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
 }

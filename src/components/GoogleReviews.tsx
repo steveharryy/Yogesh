@@ -5,7 +5,7 @@ import { reviewsData } from '../data/reviewsData';
 const GoogleReviews: React.FC = () => {
   const [hoveredReview, setHoveredReview] = useState<string | null>(null);
 
-  // Split reviews into two rows
+  // Split reviews into two rows for different animation directions
   const row1Reviews = reviewsData.slice(0, Math.ceil(reviewsData.length / 2));
   const row2Reviews = reviewsData.slice(Math.ceil(reviewsData.length / 2));
 
@@ -54,23 +54,6 @@ const GoogleReviews: React.FC = () => {
     </div>
   );
 
-  const AnimatedRow = ({ reviews, direction }: { reviews: any[]; direction: 'left' | 'right' }) => (
-    <div className="overflow-hidden relative">
-      <div className={`flex animate-scroll-${direction} hover:pause-animation`}>
-        {/* Duplicate reviews for seamless loop */}
-        {[...reviews, ...reviews, ...reviews].map((review, index) => (
-          <ReviewCard
-            key={`${review.id}-${index}`}
-            review={review}
-            isHovered={hoveredReview === `${review.id}-${index}`}
-            onHover={() => setHoveredReview(`${review.id}-${index}`)}
-            onLeave={() => setHoveredReview(null)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <section id="google-reviews" className="py-16 bg-gray-50 dark:bg-slate-800 transition-colors duration-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,19 +85,35 @@ const GoogleReviews: React.FC = () => {
         </div>
 
         {/* Animated Reviews - Row 1 (Left to Right) */}
-        <div className="mb-6">
-          <AnimatedRow
-            reviews={row1Reviews}
-            direction="left"
-          />
+        <div className="mb-6 overflow-hidden">
+          <div className="flex animate-scroll-left-to-right">
+            {/* Triple the reviews for seamless loop */}
+            {[...row1Reviews, ...row1Reviews, ...row1Reviews].map((review, index) => (
+              <ReviewCard
+                key={`row1-${review.id}-${index}`}
+                review={review}
+                isHovered={hoveredReview === `row1-${review.id}-${index}`}
+                onHover={() => setHoveredReview(`row1-${review.id}-${index}`)}
+                onLeave={() => setHoveredReview(null)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Animated Reviews - Row 2 (Right to Left) */}
-        <div className="mb-12">
-          <AnimatedRow
-            reviews={row2Reviews}
-            direction="right"
-          />
+        <div className="mb-12 overflow-hidden">
+          <div className="flex animate-scroll-right-to-left">
+            {/* Triple the reviews for seamless loop */}
+            {[...row2Reviews, ...row2Reviews, ...row2Reviews].map((review, index) => (
+              <ReviewCard
+                key={`row2-${review.id}-${index}`}
+                review={review}
+                isHovered={hoveredReview === `row2-${review.id}-${index}`}
+                onHover={() => setHoveredReview(`row2-${review.id}-${index}`)}
+                onLeave={() => setHoveredReview(null)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Stats Section */}
@@ -151,7 +150,6 @@ const GoogleReviews: React.FC = () => {
           </a>
         </div>
       </div>
-
     </section>
   );
 };
