@@ -32,15 +32,10 @@ const Faculty: React.FC = () => {
               className="group bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-200 dark:border-slate-700 p-6"
             >
               {/* Faculty Image */}
-              <div className="w-full h-52 mb-4 overflow-hidden rounded-xl">
-                <img
-                  src={faculty.image}
-                  alt={faculty.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg';
-                  }}
-                />
+              <div className="w-full h-52 mb-4 overflow-hidden rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center group-hover:from-amber-500 group-hover:to-orange-700 transition-all duration-500">
+                <div className="text-white text-6xl font-bold">
+                  {faculty.name.split(' ').map(n => n[0]).join('')}
+                </div>
               </div>
 
               {/* Name & Title */}
