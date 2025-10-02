@@ -31,59 +31,65 @@ const Faculty: React.FC = () => {
         </div>
 
         {/* Faculty Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {facultyData.map((faculty) => (
             <div
               key={faculty.id}
-              className="group bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-200 dark:border-slate-700 p-6"
+              className="group bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-200 dark:border-slate-700"
             >
               {/* Faculty Image */}
-              <div className="w-full h-52 mb-4 overflow-hidden rounded-xl relative bg-gradient-to-br from-amber-400 to-orange-600">
+              <div className="w-full h-64 overflow-hidden relative bg-gradient-to-br from-amber-400 to-orange-600">
                 {imageErrors[faculty.id] ? (
-                  <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold">
-                    {faculty.name.split(' ').map(n => n[0]).join('')}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-white text-7xl font-bold drop-shadow-lg">
+                      {faculty.name.split(' ').map(n => n[0]).join('')}
+                    </div>
                   </div>
                 ) : (
                   <img
                     src={faculty.image}
                     alt={faculty.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                     onError={() => handleImageError(faculty.id)}
+                    loading="lazy"
                   />
                 )}
               </div>
 
-              {/* Name & Title */}
-              <div className="mb-3">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                  {faculty.name}
-                </h3>
-                <p className="text-amber-600 dark:text-amber-400 font-medium">
-                  {faculty.title}
+              {/* Content */}
+              <div className="p-6">
+                {/* Name & Title */}
+                <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                    {faculty.name}
+                  </h3>
+                  <p className="text-amber-600 dark:text-amber-400 font-semibold">
+                    {faculty.title}
+                  </p>
+                </div>
+
+                {/* Subjects */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="text-xs font-semibold text-amber-700 bg-amber-50 dark:bg-amber-950/30 dark:text-amber-400 px-3 py-1.5 rounded-full">
+                    {faculty.mainSubject}
+                  </span>
+                  <span className="text-xs font-semibold text-gray-600 bg-gray-100 dark:bg-slate-800 dark:text-gray-300 px-3 py-1.5 rounded-full">
+                    {faculty.secondarySubject}
+                  </span>
+                </div>
+
+                {/* Bio */}
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-sm">
+                  {faculty.bio}
                 </p>
-              </div>
 
-              {/* Subjects */}
-              <div className="flex flex-wrap gap-2 mb-3">
-                <span className="text-xs font-medium text-amber-600 bg-amber-50 dark:bg-amber-950/30 px-2 py-1 rounded-full">
-                  {faculty.mainSubject}
-                </span>
-                <span className="text-xs font-medium text-gray-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-full">
-                  {faculty.secondarySubject}
-                </span>
-              </div>
-
-              {/* Bio */}
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
-                {faculty.bio}
-              </p>
-
-              {/* Quote */}
-              <div className="bg-gray-50 dark:bg-slate-800 p-4 rounded-lg relative">
-                <Quote className="h-4 w-4 text-amber-400 absolute top-2 left-2" />
-                <p className="text-sm italic text-gray-700 dark:text-gray-300 pl-6">
-                  "{faculty.quote}"
-                </p>
+                {/* Quote */}
+                <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-slate-800 dark:to-slate-700 p-4 rounded-xl relative border-l-4 border-amber-500">
+                  <Quote className="h-5 w-5 text-amber-500 absolute top-3 left-3 opacity-50" />
+                  <p className="text-sm italic text-gray-700 dark:text-gray-300 pl-8">
+                    "{faculty.quote}"
+                  </p>
+                </div>
               </div>
             </div>
           ))}
