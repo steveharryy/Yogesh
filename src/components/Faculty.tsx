@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Quote } from 'lucide-react';
 import { facultyData } from '../data/facultyData';
 
 const Faculty: React.FC = () => {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (facultyId: string) => {
+    setImageErrors(prev => ({ ...prev, [facultyId]: true }));
+  };
+
   return (
     <section
       id="faculty"
@@ -33,21 +39,18 @@ const Faculty: React.FC = () => {
             >
               {/* Faculty Image */}
               <div className="w-full h-52 mb-4 overflow-hidden rounded-xl relative bg-gradient-to-br from-amber-400 to-orange-600">
-                <img
-                  src={faculty.image}
-                  alt={faculty.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) {
-                      const placeholder = document.createElement('div');
-                      placeholder.className = 'absolute inset-0 flex items-center justify-center text-white text-6xl font-bold';
-                      placeholder.textContent = faculty.name.split(' ').map(n => n[0]).join('');
-                      parent.appendChild(placeholder);
-                    }
-                  }}
-                />
+                {imageErrors[faculty.id] ? (
+                  <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold">
+                    {faculty.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                ) : (
+                  <img
+                    src={faculty.image}
+                    alt={faculty.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={() => handleImageError(faculty.id)}
+                  />
+                )}
               </div>
 
               {/* Name & Title */}
