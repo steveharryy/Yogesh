@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Quote, ArrowLeft, Mail, Phone, Award, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { facultyData } from '../data/facultyData';
 
 const FacultyPage: React.FC = () => {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (facultyId: string) => {
+    setImageErrors(prev => ({ ...prev, [facultyId]: true }));
+  };
+
   return (
     <div className="pt-16">
       {/* Back Button */}
@@ -61,23 +67,34 @@ const FacultyPage: React.FC = () => {
             {facultyData.map((faculty) => (
               <div
                 key={faculty.id}
-                className="group bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 overflow-hidden border border-gray-200 dark:border-slate-700"
+                className="group bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 overflow-hidden border border-gray-200 dark:border-slate-700"
               >
-                {/* Faculty Card Header */}
-                <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-white">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                      <BookOpen className="h-6 w-6 text-white" />
+                {/* Faculty Image */}
+                <div className="w-full h-80 overflow-hidden relative bg-gradient-to-br from-amber-400 to-orange-600">
+                  {imageErrors[faculty.id] ? (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-white text-8xl font-bold drop-shadow-lg">
+                        {faculty.name.split(' ').map(n => n[0]).join('')}
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-bold">{faculty.name}</h3>
-                      <p className="text-amber-100">{faculty.title}</p>
-                    </div>
-                  </div>
+                  ) : (
+                    <img
+                      src={faculty.image}
+                      alt={faculty.name}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                      onError={() => handleImageError(faculty.id)}
+                      loading="lazy"
+                    />
+                  )}
                 </div>
 
                 {/* Faculty Card Body */}
                 <div className="p-8">
+                  {/* Name & Title */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{faculty.name}</h3>
+                    <p className="text-amber-600 dark:text-amber-400 font-semibold">{faculty.title}</p>
+                  </div>
                   {/* Subjects */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     <span className="text-sm font-medium text-amber-600 bg-amber-50 dark:bg-amber-950/30 px-3 py-1 rounded-full">
