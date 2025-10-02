@@ -32,10 +32,22 @@ const Faculty: React.FC = () => {
               className="group bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-200 dark:border-slate-700 p-6"
             >
               {/* Faculty Image */}
-              <div className="w-full h-52 mb-4 overflow-hidden rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center group-hover:from-amber-500 group-hover:to-orange-700 transition-all duration-500">
-                <div className="text-white text-6xl font-bold">
-                  {faculty.name.split(' ').map(n => n[0]).join('')}
-                </div>
+              <div className="w-full h-52 mb-4 overflow-hidden rounded-xl relative bg-gradient-to-br from-amber-400 to-orange-600">
+                <img
+                  src={faculty.image}
+                  alt={faculty.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      const placeholder = document.createElement('div');
+                      placeholder.className = 'absolute inset-0 flex items-center justify-center text-white text-6xl font-bold';
+                      placeholder.textContent = faculty.name.split(' ').map(n => n[0]).join('');
+                      parent.appendChild(placeholder);
+                    }
+                  }}
+                />
               </div>
 
               {/* Name & Title */}
