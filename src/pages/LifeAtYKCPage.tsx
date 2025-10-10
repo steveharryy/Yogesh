@@ -13,7 +13,7 @@ import achiveeve from '../photos/achiveeve.jpg';
 import img1000176370 from '../photos/1000176370.jpg';
 import img1000856692 from '../photos/1000856692.jpg';
 import img1000869479 from '../photos/1000869479.jpg';
-import imgWA0035 from '../photos/IMG-20230906-WA0035.jpg';
+import img1000956234 from '../photos/1000956234.jpg';
 
 const LifeAtYKCPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -92,10 +92,10 @@ const LifeAtYKCPage: React.FC = () => {
       description: 'Joyful moments captured as our students and faculty come together to celebrate achievements and milestones.'
     },
     {
-      src: imgWA0035,
-      caption: 'Classroom celebrations - making learning memorable 🎈',
-      category: 'classroom',
-      description: 'Special classroom moments where learning meets celebration, creating lasting memories for our students.'
+      src: img1000956234,
+      caption: 'Birthday celebrations - sweet moments with mentors 🎂',
+      category: 'community',
+      description: 'Celebrating special moments together - where teachers and students bond over cake and joy.'
     }
   ];
 
