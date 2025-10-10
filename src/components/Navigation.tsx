@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Sun, Moon, GraduationCap } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
+import logo from '../photos/Yogesh Kochar Classes Logo.png';
 
 type SubItem = {
   label: string;
@@ -87,15 +88,13 @@ const navItems: NavItem[] = [
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-gray-900 dark:text-white">YKC</span>
-                <span className="text-xs text-gray-600 dark:text-gray-300 hidden sm:block">Since 2005</span>
-              </div>
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center">
+              <img
+                src={logo}
+                alt="Yogesh Kochar Classes"
+                className="h-12 w-auto object-contain"
+              />
             </Link>
           </div>
 

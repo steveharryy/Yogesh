@@ -1,5 +1,6 @@
 import React from 'react';
-import { GraduationCap, Phone, Mail, MapPin, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import logo from '../photos/Yogesh Kochar Classes Logo.png';
 
 const Footer: React.FC = () => {
   const quickLinks = [
@@ -35,14 +36,12 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">Yogesh Kochar's Classes</h3>
-                <p className="text-amber-400 text-sm">Since 2005</p>
-              </div>
+            <div className="mb-6">
+              <img
+                src={logo}
+                alt="Yogesh Kochar Classes"
+                className="h-16 w-auto object-contain"
+              />
             </div>
 
             <p className="text-gray-300 leading-relaxed mb-6">
