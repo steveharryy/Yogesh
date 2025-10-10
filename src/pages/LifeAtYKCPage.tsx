@@ -10,6 +10,10 @@ import mentor from '../photos/mentor.jpg';
 import support from '../photos/support.jpg';
 import assesment from '../photos/assesment.jpg';
 import achiveeve from '../photos/achiveeve.jpg';
+import img1000176370 from '../photos/1000176370.jpg';
+import img1000856692 from '../photos/1000856692.jpg';
+import img1000869479 from '../photos/1000869479.jpg';
+import imgWA0035 from '../photos/IMG-20230906-WA0035.jpg';
 
 const LifeAtYKCPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -68,6 +72,30 @@ const LifeAtYKCPage: React.FC = () => {
       caption: 'Mock test sessions - practice makes perfect 📝',
       category: 'assessment',
       description: 'Regular mock tests and assessments help students prepare thoroughly for their board examinations.'
+    },
+    {
+      src: img1000869479,
+      caption: 'Victory moments with mentors - celebrating success together 🎊',
+      category: 'achievement',
+      description: 'Students celebrating their achievements with our dedicated faculty who guided them every step of the way.'
+    },
+    {
+      src: img1000856692,
+      caption: 'Birthday celebrations - because every student matters 🎂',
+      category: 'community',
+      description: 'Special moments where we celebrate birthdays and create unforgettable memories with our YKC family.'
+    },
+    {
+      src: img1000176370,
+      caption: 'Group celebrations - spreading joy and positivity 🌈',
+      category: 'community',
+      description: 'Joyful moments captured as our students and faculty come together to celebrate achievements and milestones.'
+    },
+    {
+      src: imgWA0035,
+      caption: 'Classroom celebrations - making learning memorable 🎈',
+      category: 'classroom',
+      description: 'Special classroom moments where learning meets celebration, creating lasting memories for our students.'
     }
   ];
 
