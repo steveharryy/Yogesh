@@ -93,9 +93,9 @@ const LifeAtYKCPage: React.FC = () => {
     },
     {
       src: img1000956234,
-      caption: 'Birthday celebrations - sweet moments with mentors 🎂',
+      caption: 'Faculty celebrations - our teachers are family too 🎂',
       category: 'community',
-      description: 'Celebrating special moments together - where teachers and students bond over cake and joy.'
+      description: 'Celebrating special moments within our teaching family - because at YKC, we celebrate together.'
     }
   ];
 
