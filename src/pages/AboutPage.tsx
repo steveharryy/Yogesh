@@ -126,7 +126,7 @@ const AboutPage: React.FC = () => {
               <img
                 src={banner}
                 alt="YKC Institute"
-                className="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                className="w-full h-auto rounded-2xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-amber-600/20 to-transparent rounded-2xl"></div>
             </div>

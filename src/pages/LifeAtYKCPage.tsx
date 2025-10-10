@@ -68,42 +68,6 @@ const LifeAtYKCPage: React.FC = () => {
       caption: 'Mock test sessions - practice makes perfect 📝',
       category: 'assessment',
       description: 'Regular mock tests and assessments help students prepare thoroughly for their board examinations.'
-    },
-    {
-      src: 'https://via.placeholder.com/600x400/f59e0b/ffffff?text=Your+Photo+Here',
-      caption: 'Add your special moment here 📸',
-      category: 'placeholder',
-      description: 'Replace this with your own memorable photo from YKC life.'
-    },
-    {
-      src: 'https://via.placeholder.com/600x800/10b981/ffffff?text=Your+Photo+Here',
-      caption: 'Capture your success story 🌟',
-      category: 'placeholder',
-      description: 'Add your achievement photo to showcase your journey at YKC.'
-    },
-    {
-      src: 'https://via.placeholder.com/800x600/ef4444/ffffff?text=Your+Photo+Here',
-      caption: 'Share your YKC experience 💫',
-      category: 'placeholder',
-      description: 'Replace with your favorite classroom or event photo.'
-    },
-    {
-      src: 'https://via.placeholder.com/600x600/6366f1/ffffff?text=Your+Photo+Here',
-      caption: 'Your memories matter ❤️',
-      category: 'placeholder',
-      description: 'Add photos that capture the essence of your time at YKC.'
-    },
-    {
-      src: 'https://via.placeholder.com/700x500/ec4899/ffffff?text=Your+Photo+Here',
-      caption: 'Celebrate your achievements 🎊',
-      category: 'placeholder',
-      description: 'Share photos of your special moments and celebrations.'
-    },
-    {
-      src: 'https://via.placeholder.com/600x700/8b5cf6/ffffff?text=Your+Photo+Here',
-      caption: 'Build your legacy 🏆',
-      category: 'placeholder',
-      description: 'Add images that represent your growth and success at YKC.'
     }
   ];
 

@@ -60,7 +60,7 @@ const Results: React.FC = () => {
                   <img
                     src={achiever.image}
                     alt={achiever.name}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                     {achiever.marks}
