@@ -1,24 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { Phone, MessageCircle, Sparkles, BookOpen, Award } from 'lucide-react';
-import Typed from 'typed.js';
+import React from 'react';
+import { Phone, MessageCircle, BookOpen, Award, GraduationCap } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const typedRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (typedRef.current) {
-      const typed = new Typed(typedRef.current, {
-        strings: ['Yogesh Kochar\'s Classes'],
-        typeSpeed: 60,
-        showCursor: false,
-        startDelay: 200,
-      });
-
-      return () => {
-        typed.destroy();
-      };
-    }
-  }, []);
 
   const scrollToContact = () => {
     const el = document.getElementById("contact");
@@ -39,23 +22,38 @@ const Hero: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-12">
 
-          {/* Animated Heading */}
+          {/* Main Heading */}
           <div className="pt-16 pb-4 animate-fade-in-slow">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              <span
-                ref={typedRef}
-                className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent inline-block"
-              ></span>
-            </h1>
+            <div className="flex items-center justify-center space-x-4 mb-4">
+              <GraduationCap className="h-16 w-16 md:h-20 md:w-20 text-amber-400" />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                Yogesh Kochar's Classes
+              </h1>
+            </div>
+            <p className="text-xl md:text-2xl text-amber-400 font-semibold">A Premier Coaching Institute</p>
           </div>
 
           {/* Main Tagline */}
-          <div className="pb-8 animate-fade-in-slow" style={{ animationDelay: '0.5s' }}>
-            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">
-              <span className="bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
-                We Create Toppers!
-              </span>
+          <div className="pb-6 animate-fade-in-slow" style={{ animationDelay: '0.3s' }}>
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-400">
+              We Create Toppers!
             </h2>
+          </div>
+
+          {/* Stats Below Tagline */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8 animate-fade-in-slow" style={{ animationDelay: '0.5s' }}>
+            <div className="bg-white/10 backdrop-blur-sm border border-amber-400/30 rounded-lg p-4">
+              <div className="text-2xl font-bold text-amber-400 mb-1">20+</div>
+              <div className="text-gray-300 text-sm">Years of Excellence</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-emerald-400/30 rounded-lg p-4">
+              <div className="text-2xl font-bold text-emerald-400 mb-1">6500+</div>
+              <div className="text-gray-300 text-sm">Students Taught</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-rose-400/30 rounded-lg p-4">
+              <div className="text-2xl font-bold text-rose-400 mb-1">200+</div>
+              <div className="text-gray-300 text-sm">Board Toppers</div>
+            </div>
           </div>
 
           {/* Announcement Banner */}
@@ -63,8 +61,9 @@ const Hero: React.FC = () => {
             <div className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 p-1.5 rounded-2xl shadow-2xl">
               <div className="bg-slate-900 px-8 py-5 rounded-xl">
                 <div className="flex items-center justify-center flex-wrap gap-2">
+                  <GraduationCap className="h-6 w-6 text-amber-400" />
                   <p className="text-base md:text-lg font-bold text-white text-center">
-                    Exciting News! Yogesh Kochar's Classes is now opening at Prashant Vihar Admissions Open Soon — Stay Tuned!
+                    Exciting News! Yogesh Kochar's Classes is now opening at Prashant Vihar - Admissions Open Soon
                   </p>
                 </div>
               </div>
@@ -213,21 +212,6 @@ const Hero: React.FC = () => {
             </button>
           </div>
 
-          {/* Achievement Stats */}
-          <div className="pt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 backdrop-blur-sm border border-amber-400/30 rounded-xl p-6">
-              <div className="text-4xl font-bold text-amber-400 mb-2">20+</div>
-              <div className="text-gray-300">Years of Excellence</div>
-            </div>
-            <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 backdrop-blur-sm border border-emerald-400/30 rounded-xl p-6">
-              <div className="text-4xl font-bold text-emerald-400 mb-2">6500+</div>
-              <div className="text-gray-300">Students Taught</div>
-            </div>
-            <div className="bg-gradient-to-br from-rose-500/20 to-rose-600/20 backdrop-blur-sm border border-rose-400/30 rounded-xl p-6">
-              <div className="text-4xl font-bold text-rose-400 mb-2">200+</div>
-              <div className="text-gray-300">Board Toppers</div>
-            </div>
-          </div>
 
         </div>
       </div>
