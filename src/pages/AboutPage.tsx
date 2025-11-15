@@ -2,7 +2,7 @@ import React from 'react';
 import { BookOpen, Users, Trophy, Target, Heart, Lightbulb, Award, Zap, ArrowLeft, Star, Medal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import banner from '../photos/banner.jpg';
-import yogeshPlaceholder from '../photos/yogesh.jpg';
+import yogeshSir from '../photos/yogeshss.jpg';
 
 const AboutPage: React.FC = () => {
   const features = [
@@ -221,10 +221,10 @@ const AboutPage: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Image - Placeholder for later replacement */}
             <div className="relative">
-              <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full h-[550px] rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src={yogeshPlaceholder}
-                  alt="Yogesh Kochar - Founder"
+                  src={yogeshSir}
+                  alt="Yogesh Kochar - Founder and Mentor"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
