@@ -1,8 +1,24 @@
-import React from 'react';
-import { Phone, MessageCircle, Trophy, Users, Calendar } from 'lucide-react';
-import yogeshsir from '../photos/yogeshsir.jpg';
-import record from '../photos/record.jpg';
+import React, { useEffect, useRef } from 'react';
+import { Phone, MessageCircle, Sparkles, BookOpen, Award } from 'lucide-react';
+import Typed from 'typed.js';
+
 const Hero: React.FC = () => {
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (typedRef.current) {
+      const typed = new Typed(typedRef.current, {
+        strings: ['Yogesh Kochar\'s Classes'],
+        typeSpeed: 80,
+        showCursor: false,
+        startDelay: 300,
+      });
+
+      return () => {
+        typed.destroy();
+      };
+    }
+  }, []);
 
   const scrollToContact = () => {
     const el = document.getElementById("contact");
@@ -11,185 +27,211 @@ const Hero: React.FC = () => {
     }
   };
 
-
-
   return (
     <section
       id="home"
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white relative overflow-hidden py-20"
     >
-      {/* Background Pattern */}
       <div
         className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2760%27%20height%3D%2760%27%20viewBox%3D%270%200%2060%2060%27%20xmlns%3D%27http://www.w3.org/2000/svg%27%3E%3Cg%20fill%3D%27none%27%20fill-rule%3D%27evenodd%27%3E%3Cg%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.05%27%3E%3Ccircle%20cx%3D%2730%27%20cy%3D%2730%27%20r%3D%271%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"
       ></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-          {/* Content */}
-          <div className="space-y-8 order-2 lg:order-1">
-            {/* Stats Banner */}
-            <div className="flex flex-wrap gap-4 text-sm">
-              <div className="flex items-center space-x-2 bg-amber-500/20 px-3 py-1 rounded-full">
-                <Calendar className="h-4 w-4 text-amber-400" />
-                <span className="text-amber-200">20+ Years</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-emerald-500/20 px-3 py-1 rounded-full">
-                <Users className="h-4 w-4 text-emerald-400" />
-                <span className="text-emerald-200">6500+ Students</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-rose-500/20 px-3 py-1 rounded-full">
-                <Trophy className="h-4 w-4 text-rose-400" />
-                <span className="text-rose-200">200+ Toppers</span>
-              </div>
-            </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-12">
 
-            {/* Main Heading */}
-            <div className="space-y-2">
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                <div className="animate-fade-in">
-                  <span className="bg-gradient-to-r from-white via-amber-100 to-amber-300 bg-clip-text text-transparent">
-                    Yogesh Kochar&apos;s
-                  </span>
+          {/* Animated Heading */}
+          <div className="pt-16 pb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <span
+                ref={typedRef}
+                className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent inline-block animate-neon-glow"
+              ></span>
+            </h1>
+          </div>
+
+          {/* Main Tagline */}
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">
+              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in">
+                We Create Toppers!
+              </span>
+            </h2>
+          </div>
+
+          {/* Announcement Banner */}
+          <div className="inline-block animate-bounce-slow">
+            <div className="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 p-1 rounded-2xl shadow-2xl">
+              <div className="bg-slate-900 px-8 py-4 rounded-xl">
+                <div className="flex items-center justify-center space-x-3">
+                  <Sparkles className="h-6 w-6 text-amber-400 animate-pulse" />
+                  <p className="text-xl md:text-2xl font-bold text-white">
+                    Exciting News! A new branch is opening in Prashant Vihar!
+                  </p>
+                  <Sparkles className="h-6 w-6 text-amber-400 animate-pulse" />
                 </div>
-                <div className="animate-slide-in">
-                  <span className="text-white">
-                    Classes
-                  </span>
-                </div>
-              </h1>
-
-              <div className="text-xl lg:text-2xl text-gray-300 font-medium animate-fade-in-up">
-                One Institute. Every Subject. Guaranteed Results.
-              </div>
-            </div>
-
-            {/* Description */}
-            <p className="text-lg text-gray-400 leading-relaxed max-w-lg">
-              Delhi&apos;s most trusted institute for English, Mathematics, Science, Commerce & Humanities.
-              Building confidence, ensuring success since 2005.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button
-                onClick={() => window.open("https://wa.me/919213092876?text=Hi%20I%20want%20to%20book%20a%20demo", "_blank")}
-                className="group bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <MessageCircle className="h-5 w-5" />
-                  <span>Chat on WhatsApp</span>
-                </span>
-              </button>
-
-              <button
-                onClick={() => window.open("tel:+919213092876", "_self")}
-                className="group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <Phone className="h-5 w-5" />
-                  <span>Call Us Now</span>
-                </span>
-              </button>
-
-              <button
-                onClick={scrollToContact}
-                className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <span>Get a Free Demo</span>
-                </span>
-              </button>
-            </div>
-
-            {/* Classes and Subjects Info */}
-            <div className="grid md:grid-cols-2 gap-8 p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700">
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-amber-400 mb-3">Classes IX-X</h3>
-                <p className="text-gray-300 mb-3">(Foundation Years)</p>
-                <div className="space-y-1 text-sm text-gray-400">
-                  <div>• Mathematics</div>
-                  <div>• Science</div>
-                  <div>• English</div>
-                  <div>• Social Science</div>
-                </div>
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-amber-400 mb-3">Classes XI-XII</h3>
-                <p className="text-gray-300 mb-3">(Commerce & Humanities)</p>
-                <p className="text-sm text-gray-400 mb-2">Subjects That Define Your Career</p>
-                <div className="grid grid-cols-2 gap-4 text-xs text-gray-400">
-                  <div>
-                    <div className="font-medium text-emerald-400 mb-1">Commerce</div>
-                    <div>• Maths </div>
-                    <div>• Accounts</div>
-                    <div>• Economics </div>
-                    <div>• English</div>
-                    <div>• Business Studies</div>
-                  </div>
-                  <div>
-                    <div className="font-medium text-rose-400 mb-1">Humanities</div>
-                    <div>• Economics </div>
-                    <div>• English</div>
-                    <div>• Psychology</div>
-                    <div>• Pol. Science</div>
-                    <div>• History </div>
-                    <div>• Geography</div>
-                    <div>• Sociology</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-700">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-amber-400">100+</div>
-                <div className="text-sm text-gray-400">Students scoring 90+</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-400">5★</div>
-                <div className="text-sm text-gray-400">Google Reviews</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-rose-400">24/7</div>
-                <div className="text-sm text-gray-400">Doubt Support</div>
               </div>
             </div>
           </div>
 
-          {/* Right Side Image */}
-          <div className="order-1 lg:order-2">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-amber-400/20 to-rose-400/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
-                <img
-                  src={yogeshsir}
-                  alt="Yogesh Kochar - Founder"
-                  className="w-full h-[600px] object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">Yogesh Kochar</h3>
-                  <p className="text-amber-300 text-lg font-medium">Founder & Lead Educator</p>
-                  <p className="text-gray-200 text-sm mt-2">20+ Years of Excellence in Education</p>
+          {/* Subjects Section */}
+          <div className="pt-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-amber-400 mb-12 flex items-center justify-center space-x-3">
+              <BookOpen className="h-8 w-8" />
+              <span>Subjects We Offer</span>
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Class IX-X */}
+              <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border-2 border-blue-400/30 rounded-2xl p-8 hover:scale-105 transition-transform duration-300 shadow-xl">
+                <div className="flex items-center justify-center space-x-2 mb-4">
+                  <Award className="h-8 w-8 text-blue-400" />
+                  <h4 className="text-2xl md:text-3xl font-bold text-blue-400">Class IX - X</h4>
+                </div>
+                <p className="text-gray-300 mb-6 text-lg">(Foundation Years)</p>
+                <div className="space-y-3 text-left">
+                  <div className="flex items-center space-x-3 text-lg">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span className="text-gray-200">Mathematics</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-lg">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span className="text-gray-200">Science</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-lg">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span className="text-gray-200">English</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-lg">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <span className="text-gray-200">Social Science</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Class XI-XII */}
+              <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-sm border-2 border-amber-400/30 rounded-2xl p-8 hover:scale-105 transition-transform duration-300 shadow-xl">
+                <div className="flex items-center justify-center space-x-2 mb-4">
+                  <Award className="h-8 w-8 text-amber-400" />
+                  <h4 className="text-2xl md:text-3xl font-bold text-amber-400">Class XI - XII</h4>
+                </div>
+                <p className="text-gray-300 mb-6 text-lg">(Career Defining)</p>
+
+                <div className="grid grid-cols-2 gap-6 text-left">
+                  {/* Commerce */}
+                  <div>
+                    <p className="font-bold text-emerald-400 mb-3 text-lg">Commerce</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Mathematics</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Accounts</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Economics</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">English</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Business Studies</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Humanities */}
+                  <div>
+                    <p className="font-bold text-rose-400 mb-3 text-lg">Humanities</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Economics</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">English</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Psychology</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Pol. Science</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">History</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Geography</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
+                        <span className="text-gray-200 text-sm">Sociology</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+            <button
+              onClick={() => window.open("https://wa.me/919213092876?text=Hi%20I%20want%20to%20book%20a%20demo", "_blank")}
+              className="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl shadow-green-500/50 w-full sm:w-auto"
+            >
+              <span className="flex items-center justify-center space-x-3">
+                <MessageCircle className="h-6 w-6" />
+                <span>Chat on WhatsApp</span>
+              </span>
+            </button>
+
+            <button
+              onClick={() => window.open("tel:+919213092876", "_self")}
+              className="group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl shadow-amber-500/50 w-full sm:w-auto"
+            >
+              <span className="flex items-center justify-center space-x-3">
+                <Phone className="h-6 w-6" />
+                <span>Call Us Now</span>
+              </span>
+            </button>
+
+            <button
+              onClick={scrollToContact}
+              className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl shadow-blue-500/50 w-full sm:w-auto"
+            >
+              <span className="flex items-center justify-center space-x-3">
+                <span>Get a Free Demo</span>
+              </span>
+            </button>
+          </div>
+
+          {/* Achievement Stats */}
+          <div className="pt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 backdrop-blur-sm border border-amber-400/30 rounded-xl p-6">
+              <div className="text-4xl font-bold text-amber-400 mb-2">20+</div>
+              <div className="text-gray-300">Years of Excellence</div>
+            </div>
+            <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 backdrop-blur-sm border border-emerald-400/30 rounded-xl p-6">
+              <div className="text-4xl font-bold text-emerald-400 mb-2">6500+</div>
+              <div className="text-gray-300">Students Taught</div>
+            </div>
+            <div className="bg-gradient-to-br from-rose-500/20 to-rose-600/20 backdrop-blur-sm border border-rose-400/30 rounded-xl p-6">
+              <div className="text-4xl font-bold text-rose-400 mb-2">200+</div>
+              <div className="text-gray-300">Board Toppers</div>
             </div>
           </div>
 
         </div>
-        {/* Landscape Image Section */}
- <div className="mt-16">
-  <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-500/20">
-    <img
-      src={record}
-      alt="Campus Landscape"
-      className="w-full h-auto object-contain"
-    />
-  </div>
-</div>
-
-
-
       </div>
     </section>
   );
