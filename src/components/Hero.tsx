@@ -9,9 +9,9 @@ const Hero: React.FC = () => {
     if (typedRef.current) {
       const typed = new Typed(typedRef.current, {
         strings: ['Yogesh Kochar\'s Classes'],
-        typeSpeed: 80,
+        typeSpeed: 60,
         showCursor: false,
-        startDelay: 300,
+        startDelay: 200,
       });
 
       return () => {
@@ -40,34 +40,32 @@ const Hero: React.FC = () => {
         <div className="text-center space-y-12">
 
           {/* Animated Heading */}
-          <div className="pt-16 pb-8">
+          <div className="pt-16 pb-4 animate-fade-in-slow">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span
                 ref={typedRef}
-                className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent inline-block animate-neon-glow"
+                className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent inline-block"
               ></span>
             </h1>
           </div>
 
           {/* Main Tagline */}
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold">
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in">
+          <div className="pb-8 animate-fade-in-slow" style={{ animationDelay: '0.5s' }}>
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">
+              <span className="bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
                 We Create Toppers!
               </span>
             </h2>
           </div>
 
           {/* Announcement Banner */}
-          <div className="inline-block animate-bounce-slow">
-            <div className="bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 p-1 rounded-2xl shadow-2xl">
-              <div className="bg-slate-900 px-8 py-4 rounded-xl">
-                <div className="flex items-center justify-center space-x-3">
-                  <Sparkles className="h-6 w-6 text-amber-400 animate-pulse" />
-                  <p className="text-xl md:text-2xl font-bold text-white">
-                    Exciting News! A new branch is opening in Prashant Vihar!
+          <div className="inline-block animate-flash-badge">
+            <div className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 p-1.5 rounded-2xl shadow-2xl">
+              <div className="bg-slate-900 px-8 py-5 rounded-xl">
+                <div className="flex items-center justify-center flex-wrap gap-2">
+                  <p className="text-base md:text-lg font-bold text-white text-center">
+                    Exciting News! Yogesh Kochar's Classes is now opening at Prashant Vihar Admissions Open Soon — Stay Tuned!
                   </p>
-                  <Sparkles className="h-6 w-6 text-amber-400 animate-pulse" />
                 </div>
               </div>
             </div>
